@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basket Zone</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<!-- Fondo animado -->
+<div class="bg-anim"></div>
+
+<!-- HEADER -->
+<header class="topbar">
+  <button id="hambBtn" class="hamburger">☰</button>
+  <div class="logo">🏀 Basket Zone</div>
+  <div class="actions">
+    <button id="themeBtn">🌙</button>
+    <div class="cart-float" onclick="togglePanel('cartPanel')">
+      🛒 <span id="countBadge">0</span>
+    </div>
+  </div>
+<button id="hambBtn" class="hamburger">☰</button>
+  <a href="#home">🏠 Inicio</a>
+  <a href="#equipos">🏀 Equipos</a>
+  <a href="#jugadores">👤 Jugadores</a>
+  <a href="#tienda">🛍️ Tienda</a>
+  <a href="#historial">📜 Historial</a>
+</nav>
+
+<div id="overlay"></div>
+
+</header>
+
+<!-- MENÚ -->
+<nav id="mainNav" class="main-nav">
+  <a href="#home">Inicio</a>
+  <a href="#equipos">Equipos</a>
+  <a href="#jugadores">Jugadores</a>
+  <a href="#tienda">Tienda</a>
+  <a href="#historial">Historial</a>
+</nav>
+
+<!-- MAIN -->
+<main class="container">
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div>
+    <h1>Vive el Baloncesto</h1>
+    <p>Equipos, estadísticas y la mejor tienda NBA</p>
+    <p id="bienvenida"></p>
+  </div>
+  <img src="https://i.imgur.com/6YVYB2L.png" alt="Baloncesto">
+</section>
+
+<!-- LOGIN -->
+<section class="card login-card" id="loginSection">
+  <h2>🔐 Iniciar Sesión</h2>
+  <input type="text" id="loginUsuario" placeholder="Usuario">
+  <input type="password" id="loginPassword" placeholder="Contraseña">
+  <button onclick="login()">Entrar</button>
+  <p id="loginMsg"></p>
+</section>
+
+<button id="logoutBtn" onclick="logout()" style="display:none;">Cerrar sesión</button>
+
+<!-- REGISTRO -->
+<section class="card login-card" id="registroSection">
+  <h2>📝 Registro</h2>
+  <input type="text" id="regUsuario" placeholder="Nuevo usuario">
+  <input type="password" id="regPassword" placeholder="Contraseña">
+  <button onclick="registrar()">Registrarse</button>
+  <p id="registroMsg"></p>
+</section>
+
+<!-- EQUIPOS -->
+<section id="equipos" class="card">
+  <h2>Ligas y Equipos</h2>
+  <div class="ligas-grid">
+    <div><strong>NBA</strong><ul><li>Lakers</li><li>Warriors</li></ul></div>
+    <div><strong>EuroLeague</strong><ul><li>Madrid</li><li>Barcelona</li></ul></div>
+    <div><strong>Latam</strong><ul><li>Flamengo</li><li>Capitanes</li></ul></div>
+  </div>
+</section>
+
+<!-- JUGADORES -->
+<section id="jugadores" class="card">
+  <h2>Jugadores Destacados</h2>
+  <div id="listaJugadores" class="players-grid"></div>
+  <button class="btn" onclick="promptAgregarJugador()">Añadir jugador</button>
+</section>
+
+<!-- TIENDA -->
+<section id="tienda" class="card">
+  <h2>🛍️ Tienda</h2>
+  <div id="productosContainer" class="productos-grid"></div>
+</section>
+
+<!-- HISTORIAL -->
+<section id="historial" class="card">
+  <h2>📜 Historial de Compras</h2>
+  <ul id="historialList"></ul>
+</section>
+
+</main>
+
+<!-- CARRITO -->
+<aside id="cartPanel" class="panel cart-panel">
+  <h3>Carrito</h3>
+  <ul id="carrito"></ul>
+  <p>Total: $<span id="total">0</span></p>
+  <button onclick="vaciarCarrito()">Vaciar</button>
+  <button onclick="abrirCheckout()">Comprar</button>
+</aside>
+
+<!-- CHECKOUT -->
+<section class="card checkout" id="checkout" style="display:none;">
+  <h2>Checkout</h2>
+  <input id="nombreCliente" placeholder="Nombre">
+  <input id="emailCliente" placeholder="Correo">
+  <input id="direccionCliente" placeholder="Dirección">
+  <select id="metodoPago">
+    <option value="">Pago</option>
+    <option>Tarjeta</option>
+    <option>Efectivo</option>
+  </select>
+  <button onclick="confirmarCompra()">Pagar</button>
+  <button onclick="cerrarCheckout()">Cancelar</button>
+</section>
+
+<footer class="footer">
+  © Basket Zone 2025
+</footer>
+
+<script src="codigo.js"></script>
+</body>
+</html>
