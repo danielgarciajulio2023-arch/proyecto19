@@ -9,19 +9,24 @@
 <body>
 
 <!-- Fondo animado -->
-<div class="bg-anim"></div>
+<section class="bg-anim"></section>
 
 <!-- HEADER -->
 <header class="topbar">
   <button id="hambBtn" class="hamburger">☰</button>
-  <div class="logo">🏀 Basket Zone</div>
-  <div class="actions">
+
+  <h1 class="logo">🏀 Basket Zone</h1>
+
+  <section class="actions">
     <button id="themeBtn">🌙</button>
-    <div class="cart-float" onclick="togglePanel('cartPanel')">
+    <aside class="cart-float" onclick="togglePanel('cartPanel')">
       🛒 <span id="countBadge">0</span>
-    </div>
-  </div>
-<button id="hambBtn" class="hamburger">☰</button>
+    </aside>
+  </section>
+</header>
+
+<!-- MENÚ LATERAL -->
+<nav id="menuLateral" class="menu-lateral">
   <a href="#home">🏠 Inicio</a>
   <a href="#equipos">🏀 Equipos</a>
   <a href="#jugadores">👤 Jugadores</a>
@@ -29,12 +34,10 @@
   <a href="#historial">📜 Historial</a>
 </nav>
 
-<div id="overlay"></div>
+<section id="overlay"></section>
 
-</header>
-
-<!-- MENÚ -->
-<nav id="mainNav" class="main-nav">
+<!-- NAVEGACIÓN ESCRITORIO -->
+<nav class="main-nav">
   <a href="#home">Inicio</a>
   <a href="#equipos">Equipos</a>
   <a href="#jugadores">Jugadores</a>
@@ -42,67 +45,70 @@
   <a href="#historial">Historial</a>
 </nav>
 
-<!-- MAIN -->
+<!-- CONTENIDO PRINCIPAL -->
 <main class="container">
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div>
-    <h1>Vive el Baloncesto</h1>
-    <p>Equipos, estadísticas y la mejor tienda NBA</p>
-    <p id="bienvenida"></p>
-  </div>
-  <img src="https://i.imgur.com/6YVYB2L.png" alt="Baloncesto">
-</section>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <article>
+      <h2>Vive el Baloncesto</h2>
+      <p>Equipos, estadísticas y la mejor tienda NBA</p>
+      <p id="bienvenida"></p>
+    </article>
 
-<!-- LOGIN -->
-<section class="card login-card" id="loginSection">
-  <h2>🔐 Iniciar Sesión</h2>
-  <input type="text" id="loginUsuario" placeholder="Usuario">
-  <input type="password" id="loginPassword" placeholder="Contraseña">
-  <button onclick="login()">Entrar</button>
-  <p id="loginMsg"></p>
-</section>
+    <figure>
+      <img src="https://i.imgur.com/6YVYB2L.png" alt="Baloncesto">
+    </figure>
+  </section>
 
-<button id="logoutBtn" onclick="logout()" style="display:none;">Cerrar sesión</button>
+  <!-- LOGIN -->
+  <section class="card login-card" id="loginSection">
+    <h3>🔐 Iniciar Sesión</h3>
+    <input id="loginUsuario" placeholder="Usuario">
+    <input id="loginPassword" type="password" placeholder="Contraseña">
+    <button onclick="login()">Entrar</button>
+    <p id="loginMsg"></p>
+  </section>
 
-<!-- REGISTRO -->
-<section class="card login-card" id="registroSection">
-  <h2>📝 Registro</h2>
-  <input type="text" id="regUsuario" placeholder="Nuevo usuario">
-  <input type="password" id="regPassword" placeholder="Contraseña">
-  <button onclick="registrar()">Registrarse</button>
-  <p id="registroMsg"></p>
-</section>
+  <button id="logoutBtn" onclick="logout()" hidden>Cerrar sesión</button>
 
-<!-- EQUIPOS -->
-<section id="equipos" class="card">
-  <h2>Ligas y Equipos</h2>
-  <div class="ligas-grid">
-    <div><strong>NBA</strong><ul><li>Lakers</li><li>Warriors</li></ul></div>
-    <div><strong>EuroLeague</strong><ul><li>Madrid</li><li>Barcelona</li></ul></div>
-    <div><strong>Latam</strong><ul><li>Flamengo</li><li>Capitanes</li></ul></div>
-  </div>
-</section>
+  <!-- REGISTRO -->
+  <section class="card login-card" id="registroSection">
+    <h3>📝 Registro</h3>
+    <input id="regUsuario" placeholder="Nuevo usuario">
+    <input id="regPassword" type="password" placeholder="Contraseña">
+    <button onclick="registrar()">Registrarse</button>
+    <p id="registroMsg"></p>
+  </section>
 
-<!-- JUGADORES -->
-<section id="jugadores" class="card">
-  <h2>Jugadores Destacados</h2>
-  <div id="listaJugadores" class="players-grid"></div>
-  <button class="btn" onclick="promptAgregarJugador()">Añadir jugador</button>
-</section>
+  <!-- EQUIPOS -->
+  <section id="equipos" class="card">
+    <h3>Ligas y Equipos</h3>
+    <section class="ligas-grid">
+      <article><strong>NBA</strong><ul><li>Lakers</li><li>Warriors</li></ul></article>
+      <article><strong>EuroLeague</strong><ul><li>Madrid</li><li>Barcelona</li></ul></article>
+      <article><strong>Latam</strong><ul><li>Flamengo</li><li>Capitanes</li></ul></article>
+    </section>
+  </section>
 
-<!-- TIENDA -->
-<section id="tienda" class="card">
-  <h2>🛍️ Tienda</h2>
-  <div id="productosContainer" class="productos-grid"></div>
-</section>
+  <!-- JUGADORES -->
+  <section id="jugadores" class="card">
+    <h3>Jugadores Destacados</h3>
+    <section id="listaJugadores" class="players-grid"></section>
+    <button class="btn" onclick="promptAgregarJugador()">Añadir jugador</button>
+  </section>
 
-<!-- HISTORIAL -->
-<section id="historial" class="card">
-  <h2>📜 Historial de Compras</h2>
-  <ul id="historialList"></ul>
-</section>
+  <!-- TIENDA -->
+  <section id="tienda" class="card">
+    <h3>🛍️ Tienda</h3>
+    <section id="productosContainer" class="productos-grid"></section>
+  </section>
+
+  <!-- HISTORIAL -->
+  <section id="historial" class="card">
+    <h3>📜 Historial de Compras</h3>
+    <ul id="historialList"></ul>
+  </section>
 
 </main>
 
@@ -116,8 +122,8 @@
 </aside>
 
 <!-- CHECKOUT -->
-<section class="card checkout" id="checkout" style="display:none;">
-  <h2>Checkout</h2>
+<section class="card checkout" id="checkout" hidden>
+  <h3>Checkout</h3>
   <input id="nombreCliente" placeholder="Nombre">
   <input id="emailCliente" placeholder="Correo">
   <input id="direccionCliente" placeholder="Dirección">
