@@ -1,145 +1,167 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Basket Zone</title>
-  <link rel="stylesheet" href="estilos.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Basket Zone — Tienda</title>
+  <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
 
-<!-- Fondo animado -->
-<section class="bg-anim"></section>
+  <!-- Fondo animado -->
+  <section class="bg-anim" aria-hidden="true"></section>
 
-<!-- HEADER -->
-<header class="topbar">
-  <button id="hambBtn" class="hamburger">☰</button>
+  <!-- HEADER -->
+  <header class="topbar">
+    <button id="hambBtn" class="hamburger" aria-label="Abrir menú">☰</button>
+    <h1 class="logo">🏀 Basket Zone</h1>
 
-  <h1 class="logo">🏀 Basket Zone</h1>
+    <section class="actions">
+      <button id="themeBtn" title="Cambiar tema">🌙</button>
 
-  <section class="actions">
-    <button id="themeBtn">🌙</button>
-    <aside class="cart-float" onclick="togglePanel('cartPanel')">
-      🛒 <span id="countBadge">0</span>
-    </aside>
-  </section>
-</header>
-
-<!-- MENÚ LATERAL -->
-<nav id="menuLateral" class="menu-lateral">
-  <a href="#home">🏠 Inicio</a>
-  <a href="#equipos">🏀 Equipos</a>
-  <a href="#jugadores">👤 Jugadores</a>
-  <a href="#tienda">🛍️ Tienda</a>
-  <a href="#historial">📜 Historial</a>
-</nav>
-
-<section id="overlay"></section>
-
-<!-- NAVEGACIÓN ESCRITORIO -->
-<nav class="main-nav">
-  <a href="#home">Inicio</a>
-  <a href="#equipos">Equipos</a>
-  <a href="#jugadores">Jugadores</a>
-  <a href="#tienda">Tienda</a>
-  <a href="#historial">Historial</a>
-</nav>
-
-<!-- CONTENIDO PRINCIPAL -->
-<main class="container">
-
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <article>
-      <h2>Vive el Baloncesto</h2>
-      <p>Equipos, estadísticas y la mejor tienda NBA</p>
-      <p id="bienvenida"></p>
-    </article>
-
-    <figure>
-      <img src="https://i.imgur.com/6YVYB2L.png" alt="Baloncesto">
-    </figure>
-  </section>
-
-  <!-- LOGIN -->
-  <section class="card login-card" id="loginSection">
-    <h3>🔐 Iniciar Sesión</h3>
-    <input id="loginUsuario" placeholder="Usuario">
-    <input id="loginPassword" type="password" placeholder="Contraseña">
-    <button onclick="login()">Entrar</button>
-    <p id="loginMsg"></p>
-  </section>
-
-  <button id="logoutBtn" onclick="logout()" hidden>Cerrar sesión</button>
-
-  <!-- REGISTRO -->
-  <section class="card login-card" id="registroSection">
-    <h3>📝 Registro</h3>
-    <input id="regUsuario" placeholder="Nuevo usuario">
-    <input id="regPassword" type="password" placeholder="Contraseña">
-    <button onclick="registrar()">Registrarse</button>
-    <p id="registroMsg"></p>
-  </section>
-
-  <!-- EQUIPOS -->
-  <section id="equipos" class="card">
-    <h3>Ligas y Equipos</h3>
-    <section class="ligas-grid">
-      <article><strong>NBA</strong><ul><li>Lakers</li><li>Warriors</li></ul></article>
-      <article><strong>EuroLeague</strong><ul><li>Madrid</li><li>Barcelona</li></ul></article>
-      <article><strong>Latam</strong><ul><li>Flamengo</li><li>Capitanes</li></ul></article>
+      <aside class="cart-float" id="btnCartFloat" onclick="togglePanel()" role="button" aria-label="Abrir carrito">
+        🛒 <span id="countBadge">0</span>
+      </aside>
     </section>
+  </header>
+
+  <!-- MENÚ LATERAL -->
+  <nav id="menuLateral" class="menu-lateral" aria-hidden="true">
+    <a href="#home" onclick="cerrarMenu()">🏠 Inicio</a>
+    <a href="#equipos" onclick="cerrarMenu()">🏀 Equipos</a>
+    <a href="#jugadores" onclick="cerrarMenu()">👤 Jugadores</a>
+    <a href="#tienda" onclick="cerrarMenu()">🛍️ Tienda</a>
+    <a href="#historial" onclick="cerrarMenu()">📜 Historial</a>
+  </nav>
+
+  <div id="overlay" onclick="overlayClick()"></div>
+
+  <!-- NAVEGACIÓN ESCRITORIO -->
+  <nav class="main-nav">
+    <a href="#home">Inicio</a>
+    <a href="#equipos">Equipos</a>
+    <a href="#jugadores">Jugadores</a>
+    <a href="#tienda">Tienda</a>
+    <a href="#historial">Historial</a>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container">
+
+    <!-- HERO -->
+    <section id="home" class="hero card">
+      <article>
+        <h2>Vive el Baloncesto</h2>
+        <p>Equipos, estadísticas y la mejor tienda NBA</p>
+        <p id="bienvenida"></p>
+      </article>
+
+      <figure>
+        <img src="https://i.imgur.com/6YVYB2L.png" alt="Baloncesto" />
+      </figure>
+    </section>
+
+    <!-- LOGIN -->
+    <section class="card login-card" id="loginSection">
+      <h3>🔐 Iniciar Sesión</h3>
+      <input id="loginUsuario" placeholder="Usuario" />
+      <input id="loginPassword" type="password" placeholder="Contraseña" />
+      <button onclick="login()" class="btn">Entrar</button>
+      <p id="loginMsg" class="msg"></p>
+    </section>
+
+    <button id="logoutBtn" onclick="logout()" hidden class="btn small">Cerrar sesión</button>
+
+    <!-- REGISTRO -->
+    <section class="card login-card" id="registroSection">
+      <h3>📝 Registro</h3>
+      <input id="regUsuario" placeholder="Nuevo usuario" />
+      <input id="regPassword" type="password" placeholder="Contraseña" />
+      <button onclick="registrar()" class="btn">Registrarse</button>
+      <p id="registroMsg" class="msg"></p>
+    </section>
+
+    <!-- EQUIPOS -->
+    <section id="equipos" class="card">
+      <h3>Ligas y Equipos</h3>
+      <section class="ligas-grid">
+        <article><strong>NBA</strong><ul><li>Lakers</li><li>Warriors</li><li>Nets</li></ul></article>
+        <article><strong>EuroLeague</strong><ul><li>Real Madrid</li><li>Barcelona</li></ul></article>
+        <article><strong>Latam</strong><ul><li>Flamengo</li><li>Capitanes</li></ul></article>
+      </section>
+    </section>
+
+    <!-- JUGADORES -->
+    <section id="jugadores" class="card">
+      <h3>Jugadores Destacados</h3>
+      <section id="listaJugadores" class="players-grid"></section>
+      <button class="btn" onclick="promptAgregarJugador()">Añadir jugador</button>
+    </section>
+
+    <!-- TIENDA -->
+    <section id="tienda" class="card">
+      <h3>🛍️ Tienda</h3>
+      <section id="productosContainer" class="productos-grid"></section>
+    </section>
+
+    <!-- HISTORIAL -->
+    <section id="historial" class="card">
+      <h3>📜 Historial de Compras</h3>
+      <ul id="historialList"></ul>
+    </section>
+
+  </main>
+
+  <!-- CARRITO (PANEL DESLIZANTE) -->
+  <aside id="cartPanel" class="panel cart-panel" aria-hidden="true">
+    <div class="cart-header">
+      <h3>🛒 Carrito</h3>
+      <button onclick="togglePanel()" class="closeBtn" aria-label="Cerrar carrito">✖</button>
+    </div>
+
+    <ul id="carrito" class="cart-items"></ul>
+
+    <p class="cart-total">Total: $<span id="total">0</span></p>
+
+    <div class="cart-actions">
+      <button onclick="vaciarCarrito()" class="btn">Vaciar</button>
+      <button onclick="abrirCheckout()" class="btn primary">Comprar</button>
+    </div>
+  </aside>
+
+  <!-- CHECKOUT -->
+  <section class="card checkout" id="checkout" hidden>
+    <h3>Checkout</h3>
+    <input id="nombreCliente" placeholder="Nombre" />
+    <input id="emailCliente" placeholder="Correo" />
+    <input id="direccionCliente" placeholder="Dirección" />
+    <select id="metodoPago">
+      <option value="">Seleccione método de pago</option>
+      <option>Tarjeta</option>
+      <option>Efectivo</option>
+      <option>Pago móvil</option>
+    </select>
+    <div class="checkout-actions">
+      <button onclick="confirmarCompra()" class="btn primary">Pagar</button>
+      <button onclick="cerrarCheckout()" class="btn">Cancelar</button>
+    </div>
   </section>
 
-  <!-- JUGADORES -->
-  <section id="jugadores" class="card">
-    <h3>Jugadores Destacados</h3>
-    <section id="listaJugadores" class="players-grid"></section>
-    <button class="btn" onclick="promptAgregarJugador()">Añadir jugador</button>
-  </section>
+  <!-- FACTURA MODAL -->
+  <div id="facturaModal" class="modal" hidden>
+    <div class="modal-content">
+      <button class="modal-close" onclick="cerrarFactura()">✖</button>
+      <h3>Factura</h3>
+      <ul id="detalleFactura"></ul>
+      <p>Total: $<span id="totalFactura">0</span></p>
+      <button class="btn primary" onclick="cerrarFactura()">Aceptar</button>
+    </div>
+  </div>
 
-  <!-- TIENDA -->
-  <section id="tienda" class="card">
-    <h3>🛍️ Tienda</h3>
-    <section id="productosContainer" class="productos-grid"></section>
-  </section>
+  <footer class="footer">
+    © Basket Zone 2025
+  </footer>
 
-  <!-- HISTORIAL -->
-  <section id="historial" class="card">
-    <h3>📜 Historial de Compras</h3>
-    <ul id="historialList"></ul>
-  </section>
-
-</main>
-
-<!-- CARRITO -->
-<aside id="cartPanel" class="panel cart-panel">
-  <h3>Carrito</h3>
-  <ul id="carrito"></ul>
-  <p>Total: $<span id="total">0</span></p>
-  <button onclick="vaciarCarrito()">Vaciar</button>
-  <button onclick="abrirCheckout()">Comprar</button>
-</aside>
-
-<!-- CHECKOUT -->
-<section class="card checkout" id="checkout" hidden>
-  <h3>Checkout</h3>
-  <input id="nombreCliente" placeholder="Nombre">
-  <input id="emailCliente" placeholder="Correo">
-  <input id="direccionCliente" placeholder="Dirección">
-  <select id="metodoPago">
-    <option value="">Pago</option>
-    <option>Tarjeta</option>
-    <option>Efectivo</option>
-  </select>
-  <button onclick="confirmarCompra()">Pagar</button>
-  <button onclick="cerrarCheckout()">Cancelar</button>
-</section>
-
-<footer class="footer">
-  © Basket Zone 2025
-</footer>
-
-<script src="codigo.js"></script>
+  <script src="codigo.js"></script>
 </body>
 </html>
